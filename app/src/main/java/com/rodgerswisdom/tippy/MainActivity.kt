@@ -11,6 +11,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 private const val TAG = "MainActivity"
+private const val INITIAL_TIP_PERCENT = 15
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var etSeekBarTip: SeekBar
     private lateinit var tipAmount: TextView
     private lateinit var totalAmount: TextView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,11 +38,17 @@ class MainActivity : AppCompatActivity() {
         tipAmount = findViewById(R.id.tipAmount)
         totalAmount = findViewById(R.id.totalAmount)
 
+//        Initialize Tip Percentage by progress
+
+        etSeekBarTip.progress = INITIAL_TIP_PERCENT
+        tvPercentageLabel.text = "$INITIAL_TIP_PERCENT%"
+
         // Read the percentage when seekbar os moved
 
         etSeekBarTip.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 Log.i(TAG, "onProgressChanged $progress")
+                tvPercentageLabel.text = "$progress%"
             }
             override fun onStartTrackingTouch(seekBar: SeekBar?){
 
