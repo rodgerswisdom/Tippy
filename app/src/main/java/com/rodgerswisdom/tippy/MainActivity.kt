@@ -26,5 +26,11 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        etBaseAmount = findViewById(R.id.etBaseAmount)
+        tvPercentageLabel = findViewById(R.id.tvPercentageLabel)
+        etSeekBarTip = findViewById(R.id.etSeekBarTip)
+        tipAmount = findViewById(R.id.tipAmount)
+        totalAmount = findViewById(R.id.totalAmount)
     }
 }
