@@ -1,6 +1,7 @@
 package com.rodgerswisdom.tippy
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.EditText
 import android.widget.SeekBar
 import android.widget.TextView
@@ -8,6 +9,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+
+private const val TAG = "MainActivity"
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,5 +35,20 @@ class MainActivity : AppCompatActivity() {
         etSeekBarTip = findViewById(R.id.etSeekBarTip)
         tipAmount = findViewById(R.id.tipAmount)
         totalAmount = findViewById(R.id.totalAmount)
+
+        // Read the percentage when seekbar os moved
+
+        etSeekBarTip.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                Log.i(TAG, "onProgressChanged $progress")
+            }
+            override fun onStartTrackingTouch(seekBar: SeekBar?){
+
+            }
+            override fun onStopTrackingTouch(seekBar: SeekBar?){
+
+            }
+
+        })
     }
 }
