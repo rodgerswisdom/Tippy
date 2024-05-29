@@ -20,8 +20,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var etBaseAmount: EditText
     private lateinit var tvPercentageLabel: TextView
     private lateinit var etSeekBarTip: SeekBar
-    private lateinit var tipAmount: TextView
-    private lateinit var totalAmount: TextView
+    private lateinit var tvtipAmount: TextView
+    private lateinit var tvtotalAmount: TextView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,8 +37,8 @@ class MainActivity : AppCompatActivity() {
         etBaseAmount = findViewById(R.id.etBaseAmount)
         tvPercentageLabel = findViewById(R.id.tvPercentageLabel)
         etSeekBarTip = findViewById(R.id.etSeekBarTip)
-        tipAmount = findViewById(R.id.tipAmount)
-        totalAmount = findViewById(R.id.totalAmount)
+        tvtipAmount = findViewById(R.id.tipAmount)
+        tvtotalAmount = findViewById(R.id.totalAmount)
 
 //        Initialize Tip Percentage by progress
 
@@ -85,5 +85,7 @@ class MainActivity : AppCompatActivity() {
         val tipAmount = baseAmount * tipPercent / 100
         val totalAmount = baseAmount + tipAmount
 //        3. Update the UI
+        tvtipAmount.text = tipAmount.toString()
+        tvtotalAmount.text = totalAmount.toString()
     }
 }
