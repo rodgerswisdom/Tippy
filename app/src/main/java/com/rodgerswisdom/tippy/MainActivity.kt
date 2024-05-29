@@ -72,7 +72,16 @@ class MainActivity : AppCompatActivity() {
 
             override fun afterTextChanged(s: Editable?) {
                 Log.i(TAG, "afterTextChanged $s")
+                computeTipAndTotal()
             }
         })
+    }
+
+    private fun computeTipAndTotal() {
+//        1.Get value of base and Tip Percent
+        val baseAmount = etBaseAmount.text.toString().toDouble()
+        val tipPercent = etSeekBarTip.progress
+//        2. Compute the tip and Total
+//        3. Update the UI
     }
 }
