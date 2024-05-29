@@ -82,6 +82,8 @@ class MainActivity : AppCompatActivity() {
         val baseAmount = etBaseAmount.text.toString().toDouble()
         val tipPercent = etSeekBarTip.progress
 //        2. Compute the tip and Total
+        val tipAmount = baseAmount * tipPercent / 100
+        val totalAmount = baseAmount + tipAmount
 //        3. Update the UI
     }
 }
