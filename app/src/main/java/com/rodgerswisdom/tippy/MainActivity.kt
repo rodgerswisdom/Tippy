@@ -20,11 +20,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var etBaseAmount: EditText
     private lateinit var tvPercentageLabel: TextView
     private lateinit var etSeekBarTip: SeekBar
-    private lateinit var tvtipAmount: TextView
-    private lateinit var tvtotalAmount: TextView
+    private lateinit var tvTipAmount: TextView
+    private lateinit var tvTotalAmount: TextView
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
@@ -37,8 +37,8 @@ class MainActivity : AppCompatActivity() {
         etBaseAmount = findViewById(R.id.etBaseAmount)
         tvPercentageLabel = findViewById(R.id.tvPercentageLabel)
         etSeekBarTip = findViewById(R.id.etSeekBarTip)
-        tvtipAmount = findViewById(R.id.tipAmount)
-        tvtotalAmount = findViewById(R.id.totalAmount)
+        tvTipAmount = findViewById(R.id.tipAmount)
+        tvTotalAmount = findViewById(R.id.totalAmount)
 
 //        Initialize Tip Percentage by progress
 
@@ -51,6 +51,7 @@ class MainActivity : AppCompatActivity() {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 Log.i(TAG, "onProgressChanged $progress")
                 tvPercentageLabel.text = "$progress%"
+                computeTipAndTotal()
             }
             override fun onStartTrackingTouch(seekBar: SeekBar?){
 
@@ -85,7 +86,9 @@ class MainActivity : AppCompatActivity() {
         val tipAmount = baseAmount * tipPercent / 100
         val totalAmount = baseAmount + tipAmount
 //        3. Update the UI
-        tvtipAmount.text = tipAmount.toString()
-        tvtotalAmount.text = totalAmount.toString()
+        tvTipAmount.text = tipAmount.toString()
+        tvTotalAmount.text = totalAmount.toString()
     }
 }
+
+// Bug that crashes once the edit text is empty
